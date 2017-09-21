@@ -5,20 +5,17 @@ var GitHubApi = require("github");
 
 function getTenants(callback){
 
-var github = new GitHubApi({});
+  var github = new GitHubApi({});
   github.users.getFollowingForUser({
-      // optional
-      // headers: {
-      //     "cookie": "blahblah"
-      // },
-      username: "defunkt"
+    username: "defunkt"
   }, function(err, res) {
-      console.log(JSON.stringify(res));
+    callback(res);
+    console.log(JSON.stringify(res));
   });
 }
 
 /* GET tenants */
-router.get('/tenants', function(req, res) {
+router.get('/getfollowers/', function(req, res) {
   getTenants((tenants) => {
     res.json(tenants);
   });
