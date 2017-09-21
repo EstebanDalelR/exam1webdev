@@ -13,9 +13,9 @@ class Followers extends Component {
       }
     );
   }
-  //usando mi codigo viejoh
+  //mapea cada uno de los users
 
-
+//hace render de cada map del user
   render() {
     return (
       <div>
