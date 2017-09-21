@@ -10,7 +10,7 @@ function getTenants(callback){
     username: "defunkt"
   }, function(err, res) {
     callback(res);
-    console.log(JSON.stringify(res));
+  
   });
 }
 
