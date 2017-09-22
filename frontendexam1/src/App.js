@@ -13,6 +13,8 @@ class App extends Component {
         this.state={
             //la lista de seguidores
             followers: [],
+            //los visitados
+            visited:[],
             //el usuario a mostrar
             user: ""
         }
