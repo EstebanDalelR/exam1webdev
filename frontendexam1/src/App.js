@@ -1,45 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import SearchBox from "./SearchBar.js";
 import './App.css';
-import SearchBar from './SearchBar.js';
-import Followers from './Followers.js';
+
+const URL ="http://localhost:3001";
 
 class App extends Component {
-  constructor(props) {
-    super (props);
-    this.state = {
-      Followers:[
-      ]
+
+    constructor(props) {
+
+        super(props)
+        this.state = {
+            followers: [],
+            user: ""
+        }
+        this.search=this.search.bind(this);
+
     };
-  }
 
-  componentDidMount(){
-    fetch('/getfollowers/estebandalelr',{method:'GET',
-     headers:{accept:'application/json'}})
-    .then((res)=>{ res.json();  })
-    .then((followers) =>{ this.setState({   Followers:followers });
-    })
-  }
 
-  onSearch(user) {
-
-  }
-
-  render() {
-    //Muestra una SearchBar que al oprimir Find busca los followers
-    //Followers genera una lista de seguidores del que se busco
-    //Follower es un valor individual
-    return (
-      <div className="App">
-
-        <h2>
-          Github Followers
-        </h2>
-
-        <Followers followers={this.state.Followers}/>
-      </div>
-    );
-  }
+    componentWillMount(){
+        fetch(URL+"/getFollowers/john-guerra", {method: "GET", headers: {accept: "application/json"}})
+        .then((res)=>{
+            if(res.ok)
+                return res.json();
+        }).then((followers)=>{this.setState({followers: followers});
+        });
+    }
+    search(text){
+        this.setState({user: text})
+    }
+    render() {
+        return (
+            <div>
+              <h1>Followers</h1>
+              <div>
+                <SearchBox search ={this.search}/>
+                  {console.log(this.state.user)}
+              </div>
+            </div>
+        )
+    }
 }
-
 export default App;
