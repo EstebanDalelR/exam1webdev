@@ -28,6 +28,7 @@ router.get('/getfollowers/:username', function(req, res) {
   };
 
   // POST de las organizaciones de los perfiles buscados
+  //postea a la collection orgs
   router.post('/orgs', function(req, res) {
     var db=req.params.db
     mongodb.connect(url, function(err, db) {
@@ -37,5 +38,5 @@ router.get('/getfollowers/:username', function(req, res) {
       });
     });
   });
-  
+
   module.exports = router;
