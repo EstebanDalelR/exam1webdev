@@ -4,8 +4,8 @@ class Follower extends Component {
   constructor(props) {
     super (props);
     // this.state={
-//   orgs: []
-// }
+    //   orgs: []
+    // }
   }
 
   //funcion auxiliar que llama el json de las orgs a las que pertenece el usuario
@@ -24,7 +24,7 @@ class Follower extends Component {
   //   return follower.map((t,i)=>
   //   {return <Follower follower={t} key={i}/>;}
   // );
-//muestra cada uno de los atributos del usuario con los props
+  //muestra cada uno de los atributos del usuario con los props
   render() {
     return (
       <div>
