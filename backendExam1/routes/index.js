@@ -3,22 +3,14 @@ var router = express.Router();
 var GitHubApi = require("github");
 
 
-function getTenants(callback){
-
-  var github = new GitHubApi({});
-  github.users.getFollowingForUser({
-    username: "defunkt"
-  }, function(err, res) {
-    callback(res);
-  
-  });
-}
 
 /* GET tenants */
-router.get('/getfollowers/', function(req, res) {
-  getTenants((tenants) => {
-    res.json(tenants);
+router.get('/getfollowers/:username', function(req, res) {
+  var github = new GitHubApi({});
+  github.users.getFollowingForUser(
+    {username: req.params.username},
+    function(err, data){res.json(data);
+    });
   });
-});
 
-module.exports = router;
+  module.exports = router;
