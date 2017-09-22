@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
-//import searchbar from './SearchBar.js';
+import SearchBar from './SearchBar.js';
 import Followers from './Followers.js';
 
 //test url
@@ -14,7 +14,9 @@ class App extends Component {
             //la lista de seguidores
             followers: [],
             //el usuario a mostrar
-            user: ""
+            user: "",
+            //los usuarios visitados
+            //visited:[]
         }
         //bind del usuario
         //this.search=this.search.bind(this);
@@ -42,6 +44,7 @@ class App extends Component {
             <div>
               <h1>Github Followers</h1>
               <div>
+                <SearchBar user={this.state.followers}/>
                 <Followers followers={this.state.followers}/>
 
               </div>
