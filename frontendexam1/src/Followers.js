@@ -9,10 +9,9 @@ class Followers extends Component {
 
   //mapea cada uno de los users
   renderFollowers(){
-    console.log(this.props);
-    if (typeof t !== 'undefined')
-    return this.props.follower.map(
-      (t,i)=>{if (typeof t !== 'undefined') return <Follower follower={t} key={i}/>;}
+    const followers = this.props.followers;
+    return followers.map((t,i)=>
+      {return <Follower follower={t} key={i}/>;}
     );
   }
 

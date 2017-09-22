@@ -1,10 +1,10 @@
 import './App.css';
 import React, { Component } from 'react';
-import SearchBox from './SearchBar.js';
+//import searchbar from './SearchBar.js';
 import Followers from './Followers.js';
 
 //test url
-const URL="http://localhost:3001";
+//const URL="http://localhost:3001";
 
 class App extends Component {
 
@@ -20,14 +20,14 @@ class App extends Component {
         //this.search=this.search.bind(this);
     };
 
-    //si el componente se monta, se hace el llamado
-    componentDidMount(){
-        //fetch inicial con john
-        fetch("/getFollowers/estebandalelr", {method:"GET", headers:{accept: "application/json"}})
-        //el return luego lo revisa y lo convierte a json
+    //si el componente se va a montar, se hace el llamado
+    componentWillMount(){
+        //fetch inicial con mi perfil
+        fetch("http://localhost:3001/getFollowers/estebandalelr", {method:"GET", headers:{accept: "application/json"}})
+        //luego lo revisa y lo convierte a json
         .then((res)=>{if(res.ok) return res.json();})
-        //pone en el state los followers
-        .then((followers)=>{this.setState({followers: followers});
+        //pone en el state los followers, del array data
+        .then((followers)=>{this.setState({followers: followers.data});
         });
     }
 
@@ -36,18 +36,18 @@ class App extends Component {
         this.setState({user: text})
     }
 
-    //render
+    //render, pasa el state a la clase que llama
     render() {
-      console.log(this.state);
         return (
             <div>
               <h1>Github Followers</h1>
               <div>
-                <Followers followers={this.followers[data]}/>
-                <SearchBox search={this.search}/>
+                <Followers followers={this.state.followers}/>
+
               </div>
             </div>
         )
     }
 }
+
 export default App;
