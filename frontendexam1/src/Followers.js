@@ -10,10 +10,9 @@ class Followers extends Component {
   //mapea cada uno de los users
   renderFollowers(){
     console.log(this.props);
+    if (typeof t !== 'undefined')
     return this.props.follower.map(
-      (t,i)=>{
-        return <Follower follower={t} key={i}/>;
-      }
+      (t,i)=>{if (typeof t !== 'undefined') return <Follower follower={t} key={i}/>;}
     );
   }
 
@@ -21,7 +20,7 @@ class Followers extends Component {
   render() {
     return (
       <div>
-        <b>Seguidores de {this.props.username} </b>
+        <b>Seguidores de  </b>
         {this.renderFollowers()}
       </div>
     );

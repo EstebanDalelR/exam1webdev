@@ -10,9 +10,9 @@ class Follower extends Component {
   render() {
     return (
       <div>
-        <img className="aptNumber">{this.props.follower.profilepic}</img>
-        <p className="tenantName">{this.props.follower.name}</p>
-        <p className="tenantPhone">{this.props.follower.followernumber}</p>
+        <img className="aptNumber">{this.props.follower.avatar_url}</img>
+        <p className="tenantName">{this.props.follower.login}</p>
+        <p className="tenantPhone">{this.props.follower.organizations_url}</p>
 
       </div>
     );

@@ -1,41 +1,50 @@
-import React, { Component } from 'react';
-import SearchBox from "./SearchBar.js";
 import './App.css';
+import React, { Component } from 'react';
+import SearchBox from './SearchBar.js';
+import Followers from './Followers.js';
 
-const URL ="http://localhost:3001";
+//test url
+const URL="http://localhost:3001";
 
 class App extends Component {
 
-    constructor(props) {
-
+    constructor(props){
         super(props)
-        this.state = {
+        this.state={
+            //la lista de seguidores
             followers: [],
+            //el usuario a mostrar
             user: ""
         }
-        this.search=this.search.bind(this);
-
+        //bind del usuario
+        //this.search=this.search.bind(this);
     };
 
-
-    componentWillMount(){
-        fetch(URL+"/getFollowers/john-guerra", {method: "GET", headers: {accept: "application/json"}})
-        .then((res)=>{
-            if(res.ok)
-                return res.json();
-        }).then((followers)=>{this.setState({followers: followers});
+    //si el componente se monta, se hace el llamado
+    componentDidMount(){
+        //fetch inicial con john
+        fetch("/getFollowers/estebandalelr", {method:"GET", headers:{accept: "application/json"}})
+        //el return luego lo revisa y lo convierte a json
+        .then((res)=>{if(res.ok) return res.json();})
+        //pone en el state los followers
+        .then((followers)=>{this.setState({followers: followers});
         });
     }
+
+    //busqueda por texto
     search(text){
         this.setState({user: text})
     }
+
+    //render
     render() {
+      console.log(this.state);
         return (
             <div>
-              <h1>Followers</h1>
+              <h1>Github Followers</h1>
               <div>
-                <SearchBox search ={this.search}/>
-                  {console.log(this.state.user)}
+                <Followers followers={this.followers[data]}/>
+                <SearchBox search={this.search}/>
               </div>
             </div>
         )

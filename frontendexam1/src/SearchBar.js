@@ -21,6 +21,7 @@ class SearchBar extends Component {
       this.props.onSearch(evt.target.value);
     }
   }
+  onEnter
   render() {
     return (
       <div>
@@ -29,7 +30,7 @@ class SearchBar extends Component {
     Github Handle:
     <input type="text" name="name" />
   </label>
-  <input type="submit" value="Find" />
+  
 </form>
       </div>
     );
